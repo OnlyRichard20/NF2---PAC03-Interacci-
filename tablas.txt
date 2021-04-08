@@ -1,0 +1,40 @@
+create type is_type_enum as enum('no', 'yes');
+CREATE TABLE "login_details"(
+"id" SERIAL,
+"login_details_id" SERIAL PRIMARY KEY NOT NULL,
+"user_id" integer NOT NULL,
+"last_activity"  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ "is_type" is_type_enum);
+
+
+
+
+
+CREATE TABLE "chat_message"(
+"id" SERIAL,
+"chat_message_id" SERIAL PRIMARY KEY NOT NULL,
+"to_user_id" integer NOT NULL,
+"from_user_id" integer NOT NULL,
+"chat_message" varchar(255) NOT NULL,
+"timestamp" timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+status integer NOT NULL
+);
+
+
+CREATE TABLE "login"(
+"id" SERIAL,
+"user_id" SERIAL PRIMARY KEY NOT NULL,
+"username" varchar(255) NOT NULL,
+"password" varchar(255) NOT NULL
+);
+
+
+INSERT INTO login (user_id, username, password) VALUES
+(1, 'johnsmith',   '$2y$10$4REfvTZpxLgkAR/lKG9QiOkSdahOYIR3MeoGJAyiWmRkEFfjH3396'),
+(2, 'peterParker', '$2y$10$4REfvTZpxLgkAR/lKG9QiOkSdahOYIR3MeoGJAyiWmRkEFfjH3396'),
+(3, 'davidMoore',  '$2y$10$4REfvTZpxLgkAR/lKG9QiOkSdahOYIR3MeoGJAyiWmRkEFfjH3396');
+
+-- --------------------------------------------------------
+
+
+
